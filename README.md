@@ -1,119 +1,68 @@
 # AI Study Assistant
 
-## Project Description
+This project is a simple Python based study assistant. I made it for the practical task about implementing and testing an AI or agent based Python system.
 
-AI Study Assistant is a Python-based agent system that helps users study written material. The system receives either direct text or a text file, analyzes the content, extracts important keywords, creates a short summary, and generates study questions.
+The program helps a user study a text. The user can either write text directly or give the path of a text file. After that, the system gives a short summary, keywords, study advice, and some study questions.
 
-The project demonstrates an AI-assisted workflow with tool usage, input handling, testing, documentation, and deployment preparation.
+## How it works
 
-## Main Features
+The system uses a simple agent workflow.
 
-- Accepts direct text input
-- Reads `.txt` files
-- Cleans and analyzes text
-- Extracts keywords
-- Generates a short summary
-- Generates study questions
-- Includes unit tests
-- Includes clear project structure and startup instructions
+First, the agent takes the input from the user. Then it checks if the input is a file path or normal text. If it is a file path, it reads the file. After that, the text is sent to the analyzer and question generator tools.
 
-## Agent-Based Logic
+The result includes:
 
-The system uses a simple intelligent agent called `StudyAssistantAgent`.
+- short summary
+- important keywords
+- study advice
+- generated questions
 
-The agent:
-1. receives user input,
-2. decides whether the input is a file path or direct text,
-3. calls the file reader tool if needed,
-4. sends the text to the text analyzer tool,
-5. sends the text to the quiz generator tool,
-6. returns a structured study result.
+## Tools
 
-## Tools Used
+There are three tools in the project.
 
-### FileReaderTool
-Reads `.txt` files from the local system.
+FileReaderTool reads text files.
 
-### TextAnalyzerTool
-Cleans text, extracts keywords, creates a short summary, and gives study advice.
+TextAnalyzerTool cleans and analyzes the text. It finds repeated important words and creates a short summary.
 
-### QuizGeneratorTool
-Generates simple study questions from the input text.
+QuizGeneratorTool creates simple questions from the text.
 
-## Project Structure
+## How to run
 
-```text
-ai-study-assistant/
-│
-├── main.py
-├── agent.py
-├── tools/
-│   ├── file_reader.py
-│   ├── text_analyzer.py
-│   └── quiz_generator.py
-│
-├── tests/
-│   ├── test_file_reader.py
-│   ├── test_text_analyzer.py
-│   └── test_agent.py
-│
-├── sample_files/
-│   └── sample_text.txt
-│
-├── requirements.txt
-├── README.md
-└── journal.md
-```
+Clone the project and open the project folder.
 
-## Installation
+Install requirements:
 
-Clone the repository:
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_LINK
-cd ai-study-assistant
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
-```
 
-## How to Run
+Run the program:
 
-Run the main program:
-
-```bash
 python main.py
-```
 
 Example input:
 
-```text
 sample_files/sample_text.txt
-```
 
-You can also paste direct text instead of a file path.
+The user can also paste normal text directly instead of using a file.
 
-## How to Test
+## Testing
 
-Run:
+The project includes basic tests. The tests check the file reader, text analyzer, and agent workflow.
 
-```bash
+To run tests:
+
 pytest
-```
 
-## Data Porting and Conversion
+If pytest has an import problem, this can also be used:
 
-The system accepts either direct text or a `.txt` file. If a file path is entered, the FileReaderTool reads the file and converts it into a plain Python string. The text is cleaned by removing unnecessary whitespace. Then it is passed to the analyzer and quiz generator tools.
+PYTHONPATH=. pytest
 
-This keeps the data format consistent between components.
+## Data handling
 
-## Deployment Preparation
+The system mainly works with plain text. If the user gives a file path, the file content is read and converted into a string. Then this text is used by the other tools. This keeps the data flow simple and understandable.
 
-This project is prepared as a local command-line application. Another user can run it by cloning the GitHub repository, installing the dependencies from `requirements.txt`, and running `python main.py`.
+## Deployment
 
-## Proposed Deployment Strategy
+This project is prepared as a local command line application. Another user can run it by downloading the repository, installing the requirements, and running main.py.
 
-The most suitable deployment strategy for this project is a local command-line tool. In a future version, it could be deployed as a web service using Flask or FastAPI.
+For this assignment, local deployment is enough. In the future, the same idea could be improved as a small web application.
